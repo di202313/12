@@ -1,6 +1,3 @@
-﻿#include <iostream>
-using namespace std;
-
 double withdrawMoney(double balance) {
     double amount;
     cout << "Введите сумму для снятия: ";
