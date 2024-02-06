@@ -9,16 +9,23 @@ int main() {
     cout << "Добро пожаловать в банкомат!" << endl;
     cout << "Введите номер карты: ";
     cin >> CardNumber;
-    for (int i = 0; i < attempts; i++) {
-
-
+      for (int i = 0; i < attempts; i++) {
 
         cout << "Введите пин-код: ";
         cin >> inputPin;
 
-        if (inputPin == pin) {
+        if ((CardNumber == cardNumber1 && inputPin == pin1) || (CardNumber == cardNumber2 && inputPin == pin2)) {
             cout << "Вход выполнен\n";
             break;
+            if (CardNumber == cardNumber1) {
+               
+                balance1 = 30000; 
+                break;
+            }
+            else {
+                balance2 = 20000; 
+                break;
+            }
         }
         else {
             cout << "Неправильный  пин-код\n";
@@ -42,21 +49,30 @@ int main() {
         cout << "Введите номер: ";
         cin >> choice;
 
+       
         switch (choice) {
         case 1:
-            balance = withdrawMoney(balance);
+            balance1 = withdrawMoney(balance1);
+            break;
+            balance2 = withdrawMoney(balance2);
             break;
         case 2:
-            balance = depositMoney(balance);
+            balance1 = depositMoney(balance1);
+            break;
+            balance2 = depositMoney(balance2);
             break;
         case 3:
             char operatorChoice;
             cout << "Выберите оператора, введите английскую букву В или М (B - Билайн, M - МТС): ";
             cin >> operatorChoice;
-            payPhone(balance, operatorChoice);
+            payPhone(balance1, operatorChoice);
+            break;
+            payPhone(balance2, operatorChoice);
             break;
         case 4:
-            cout << "Баланс: " << balance << " р" << endl;
+            cout << "Баланс: " << balance1 << " р" << endl;
+            break;
+            cout << "Баланс: " << balance2 << " р" << endl;
             break;
         case 5:
             return 0;
@@ -64,6 +80,5 @@ int main() {
             cout << "Некорректный выбор" << endl;
         }
     }
-
     return 0;
 }
