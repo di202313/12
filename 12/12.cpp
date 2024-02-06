@@ -1,10 +1,13 @@
 ﻿#include <iostream>
 using namespace std;
 
-int cardNumber = 1234567890;
-int pin = 1234;
+int cardNumber1 = 1234567890;
+int pin1 = 1234;
+float balance1 = 30000;
 
-float balance = 30000;
+int cardNumber2 = 987654321;
+int pin2 = 5678; 
+float balance2 = 20000;
 
 bool checkAmount(double amount) {
     if (amount < 5.0 || amount != (int)amount) {
