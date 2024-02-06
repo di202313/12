@@ -1,77 +1,81 @@
 ﻿#include <iostream>
 using namespace std;
 
-class Bankomat {
+int cardNumber = 1234567890;
+int pin = 1234;
 
-private:
-    long long cardNumber;
-    int pinCode;
-    int balance;
+float balance = 40000;
 
-public:
-    Bankomat(long long card, int pin, int bal) : cardNumber(card), pinCode(pin), balance(bal) {}
-    
-    void login() {
-        setlocale(0, "");
-        long long inputCard;
-        int inputPin;
-
-        for (int i = 0; i < 3; i++) {
-            cout << "Введите номер карты: ";
-            cin >> inputCard;
-            cout << "Введите pin-код: ";
-            cin >> inputPin;
-
-            if (inputCard == cardNumber && inputPin == pinCode) {
-                cout << "Вход в систему успешен.\n";
-                return;
-            }
-            else {
-                cout << "Неверный номер карты или pin-код. Пожалуйста, попробуйте снова.\n";
-            }
-        }
-
-        cout << "Ошибка входа. Доступ по этой карте запрещен\n";
+bool checkAmount(double amount) {
+    if (amount < 5.0 || amount != (int)amount) {
+        cout << "Введена неверная сумма" << endl;
+        return false;
     }
+    return true;
+}
 
-    void checkBalance() {
-        setlocale(0, "");
-        cout << "Ваш баланс равен: " << balance << "р\n";
-    }
 
-    void withdrawCash(int amount) {
-        setlocale(0, "");
-        if (amount % 5 != 0 || amount > balance) {
-            cout << "Неверная сумма или недостаточно средств.\n";
-        }
-        else {
-            balance -= amount;
-            cout << "Успешно выведен: " << amount << "р\n";
-        }
-    }
-
-    void depositCash(int amount) {
-        setlocale(0, "");
-        if (amount % 5 != 0) {
-            cout << "Недопустимая сумма. Вносите депозит только в количестве, кратном 5р.\n";
-        }
-        else {
-            balance += amount;
-            cout << "Успешно депонирован: " << amount << "р\n";
-        }
-    }
-};
 
 int main() {
-    Bankomat user1(123456789, 1234, 30000);
+    setlocale(0, "");
+    int CardNumber, inputPin;
+    int attempts = 3;
 
-    user1.login();
+    for (int i = 0; i < attempts; i++) {
+        cout << "Добро пожаловать в банкомат!" << endl;
+        cout << "Введите номер карты: ";
+        cin >> CardNumber;
 
-    user1.checkBalance();
+        cout << "Введите пин-код: ";
+        cin >> inputPin;
 
-    user1.withdrawCash(10000);
+        if (CardNumber == cardNumber && inputPin == pin) {
+            cout << "Вход выполнен\n";
+            break;
+        }
+        else {
+            cout << "Неправильный номер карты или пин-код\n";
+            if (i == attempts - 1) {
+                cout << "Доступ к карте заблокирован\n";
+                return 1;
+            }
+        }
+    }
 
-    user1.depositCash(6000);
+    int choice;
+    while (true) {
+        cout << endl;
+        cout << "Выберите действие:" << endl;
+        cout << "1. Снять наличные" << endl;
+        cout << "2. Пополнить счет" << endl;
+        cout << "3. Оплатить телефон" << endl;
+        cout << "4. Проверить баланс" << endl;
+        cout << "5. Выйти" << endl;
+        cout << "Введите номер: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            balance = withdrawMoney(balance);
+            break;
+        case 2:
+            balance = depositMoney(balance);
+            break;
+        case 3:
+            char operatorChoice;
+            cout << "Выберите оператора (B - Билайн, M - МТС): ";
+            cin >> operatorChoice;
+            payPhone(balance, operatorChoice);
+            break;
+        case 4:
+            cout << "Баланс: " << balance << " р" << endl;
+            break;
+        case 5:
+            return 0;
+        default:
+            cout << "Некорректный выбор" << endl;
+        }
+    }
 
     return 0;
 }
