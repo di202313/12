@@ -4,7 +4,7 @@ using namespace std;
 int cardNumber = 1234567890;
 int pin = 1234;
 
-float balance = 40000;
+float balance = 30000;
 
 bool checkAmount(double amount) {
     if (amount < 5.0 || amount != (int)amount) {
