@@ -31,7 +31,7 @@ int main() {
             cout << "Неправильный  пин-код\n";
             if (i == attempts - 1) {
                 cout << "Доступ к карте заблокирован\n";
-                return 1;
+                 break;
             }
         }
     }
