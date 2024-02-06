@@ -6,26 +6,29 @@ int main() {
     int CardNumber, inputPin;
     int attempts = 3;
 
+    cout << "Добро пожаловать в банкомат!" << endl;
+    cout << "Введите номер карты: ";
+    cin >> CardNumber;
     for (int i = 0; i < attempts; i++) {
-        cout << "Добро пожаловать в банкомат!" << endl;
-        cout << "Введите номер карты: ";
-        cin >> CardNumber;
+
+
 
         cout << "Введите пин-код: ";
         cin >> inputPin;
 
-        if (CardNumber == cardNumber && inputPin == pin) {
+        if (inputPin == pin) {
             cout << "Вход выполнен\n";
             break;
         }
         else {
-            cout << "Неправильный номер карты или пин-код\n";
+            cout << "Неправильный  пин-код\n";
             if (i == attempts - 1) {
                 cout << "Доступ к карте заблокирован\n";
                 return 1;
             }
         }
     }
+
 
     int choice;
     while (true) {
