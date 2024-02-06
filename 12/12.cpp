@@ -1,11 +1,11 @@
 ﻿#include <iostream>
 using namespace std;
 
-int cardNumber1 = 1234567890;
+int cardNumber1 = 123456;
 int pin1 = 1234;
 float balance1 = 30000;
 
-int cardNumber2 = 987654321;
+int cardNumber2 = 98765;
 int pin2 = 5678; 
 float balance2 = 20000;
 
