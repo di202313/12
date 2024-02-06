@@ -48,7 +48,7 @@ int main() {
             break;
         case 3:
             char operatorChoice;
-            cout << "Выберите оператора (B - Билайн, M - МТС): ";
+            cout << "Выберите оператора, введите английскую букву В или М (B - Билайн, M - МТС): ";
             cin >> operatorChoice;
             payPhone(balance, operatorChoice);
             break;
