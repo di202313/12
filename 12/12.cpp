@@ -14,7 +14,7 @@ bool checkAmount(double amount) {
     return true;
 }
 
-
+//Функции сюда нужно вставить
 
 int main() {
     setlocale(0, "");
