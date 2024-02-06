@@ -1,18 +1,3 @@
-﻿#include <iostream>
-using namespace std;
-
-int cardNumber = 1234567890;
-int pin = 1234;
-
-float balance = 40000;
-
-bool checkAmount(double amount) {
-    if (amount < 5.0 || amount != (int)amount) {
-        cout << "Введена неверная сумма" << endl;
-        return false;
-    }
-    return true;
-}
 
 //Функции сюда нужно вставить
 
