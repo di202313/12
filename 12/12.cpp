@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 
 int cardNumber1 = 123456;
@@ -6,8 +6,27 @@ int pin1 = 1234;
 float balance1 = 30000;
 
 int cardNumber2 = 98765;
-int pin2 = 5678; 
+int pin2 = 5678;
 float balance2 = 20000;
+
+int enterPin(int cardNumber) {
+    int attempts = 3;
+    int pin;
+    while (attempts > 0) {
+        cout << "Введите пинкод для карты " << cardNumber << ": ";
+        cin >> pin;
+
+        if ((cardNumber == cardNumber1 && pin == pin1) || (cardNumber == cardNumber2 && pin == pin2)) {
+            cout << "Вход разрешен" << endl;
+            return 1;
+        }
+        else {
+            cout << "Пинкод неверный" << endl;
+            attempts--;
+           
+        }
+    }
+}
 
 bool checkAmount(double amount) {
     if (amount < 5.0 || amount != (int)amount) {
